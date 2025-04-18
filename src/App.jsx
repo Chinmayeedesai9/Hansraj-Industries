@@ -7,6 +7,7 @@ import Products from "./pages/Products";
 import AdminPage from "./pages/AdminPage";
 import ProductDetail from "./pages/ProductDetail";
 import AboutUs from "./pages/AboutUs"; // <- Add this import
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/about" element={<AboutUs />} /> {/* New About Us route */}
         </Routes>
+        <Footer />
       </div>
     </Router>
   );
