@@ -61,7 +61,8 @@ Message: ${formData.message}`
       {/* Main Layout */}
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row mt-8 gap-6 px-4">
         {/* Category Sidebar */}
-        <div className="w-full md:w-1/4 bg-white p-4 rounded-lg shadow border h-auto">
+        <div className="w-full md:w-1/4 bg-white p-4 rounded-lg shadow border self-start">
+
           <h3 className="text-lg font-semibold mb-4 text-gray-800">Categories</h3>
           <ul className="space-y-2">
             <li>
@@ -115,7 +116,7 @@ Message: ${formData.message}`
             ) : (
               filteredProducts.map(product => (
                 <div key={product.id} className="bg-white border rounded-lg shadow-md hover:shadow-lg transition">
-                  <Link to={`/product/${product.id}`} className="block border-b">
+                  <Link to={`/product/${product.id}`} className="block">
                     <img
                       src={product.images?.[0]}
                       alt={product.name}
