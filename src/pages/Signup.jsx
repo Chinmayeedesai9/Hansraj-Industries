@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { auth } from "../firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -13,8 +18,14 @@ const Signup = () => {
     e.preventDefault();
     setError("");
 
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
+
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(userCredential.user, { displayName: name });
       navigate("/");
     } catch (err) {
       if (err.code === "auth/email-already-in-use") {
@@ -26,35 +37,70 @@ const Signup = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 shadow-lg border rounded-lg">
+    <div className="max-w-md mx-auto mt-10 p-6 shadow-lg border rounded-lg bg-white">
       <h2 className="text-2xl font-bold text-center mb-4">Sign Up</h2>
+
       <form onSubmit={handleSignup} className="space-y-4">
-        <input
-          type="email"
-          className="w-full p-2 border rounded"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          className="w-full p-2 border rounded"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        {error && <p className="text-red-500">{error}</p>}
+        <label className="block">
+          <span className="text-sm font-medium">Full Name <span className="text-red-500">*</span></span>
+          <input
+            type="text"
+            required
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-full p-2 mt-1 border rounded focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          />
+        </label>
+
+        <label className="block">
+          <span className="text-sm font-medium">Email <span className="text-red-500">*</span></span>
+          <input
+            type="email"
+            autoComplete="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full p-2 mt-1 border rounded focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            placeholder="example@email.com"
+          />
+        </label>
+
+        <label className="block">
+          <span className="text-sm font-medium">Password <span className="text-red-500">*</span></span>
+          <input
+            type="password"
+            autoComplete="new-password"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full p-2 mt-1 border rounded focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          />
+        </label>
+
+        <label className="block">
+          <span className="text-sm font-medium">Confirm Password <span className="text-red-500">*</span></span>
+          <input
+            type="password"
+            autoComplete="new-password"
+            required
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            className="w-full p-2 mt-1 border rounded focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          />
+        </label>
+
+        {error && <p className="text-red-500 text-sm">{error}</p>}
+
         <button
           type="submit"
-          className="w-full bg-yellow-600 text-white p-2 rounded"
+          className="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-medium py-2 rounded"
         >
           Sign Up
         </button>
+
         <p className="text-center text-sm mt-2">
           Already have an account?{" "}
-          <a href="/login" className="text-blue-600 underline">
+          <a href="/login" className="text-blue-600 underline hover:text-blue-800">
             Log In
           </a>
         </p>

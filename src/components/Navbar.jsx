@@ -3,9 +3,7 @@ import { Menu, X } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
-import { Link, useNavigate } from "react-router-dom"; // ✅ Clean single import
-
-
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,11 +12,16 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-  await signOut(auth);
-  setIsOpen(false);
-  navigate("/"); // Redirect to home page
-};
+    await signOut(auth);
+    setIsOpen(false);
+    navigate("/"); // Redirect to home page
+  };
 
+  const getFirstName = () => {
+    if (user?.displayName) return user.displayName.split(" ")[0];
+    if (user?.email) return user.email.split("@")[0];
+    return "User";
+  };
 
   const navLinks = (
     <>
@@ -54,12 +57,15 @@ const Navbar = () => {
         </Link>
       )}
       {user ? (
-        <button
-          onClick={handleLogout}
-          className="text-red-600 hover:underline"
-        >
-          Logout
-        </button>
+        <>
+          <span className="text-slate-700">Welcome, {getFirstName()}!</span>
+          <button
+            onClick={handleLogout}
+            className="text-red-600 hover:underline"
+          >
+            Logout
+          </button>
+        </>
       ) : (
         <Link
           to="/login"

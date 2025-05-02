@@ -16,22 +16,27 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-gray-50 flex flex-col">
           <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/product/:id" element={<ProductDetail />} />
-            <Route path="/about" element={<AboutUs />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} /> {/* ✅ Signup Route */}
-            <Route path="/admin" element={<AdminPage />} /> {/* 🔒 Protect later */}
-          </Routes>
+
+          <div className="flex-grow pb-10">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/products" element={<Products />} />
+              <Route path="/product/:id" element={<ProductDetail />} />
+              <Route path="/about" element={<AboutUs />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/admin" element={<AdminPage />} />
+            </Routes>
+          </div>
+
           <Footer />
         </div>
       </Router>
     </AuthProvider>
   );
 }
+
 
 export default App;

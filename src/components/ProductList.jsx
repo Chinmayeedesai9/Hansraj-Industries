@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const ProductList = () => {
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const initialCategory = params.get("category") || "All";
+
   const [products, setProducts] = useState([]);
   const [whatsappFormProduct, setWhatsappFormProduct] = useState(null);
   const [formData, setFormData] = useState({ quantity: "", message: "" });
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [categories, setCategories] = useState([]);
+
+  const defaultWhatsappNumber = import.meta.env.VITE_PHONE_NUMBER_WITH_COUNTRY;
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -22,13 +28,14 @@ const ProductList = () => {
     fetchProducts();
   }, []);
 
+  const handleCall = () => {
+    window.location.href = `tel:${import.meta.env.VITE_PHONE_NUMBER}`;
+  };
+
   const handleWhatsAppSubmit = (product) => {
-    const phoneNumber = import.meta.env.VITE_WHATSAPP_NUMBER;
+    const phoneNumber = product.whatsappNumber || defaultWhatsappNumber;
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
-      `Hello! I'm interested in:
-Product: ${product.name}
-Quantity: ${formData.quantity}
-Message: ${formData.message}`
+      `Hello! I'm interested in:\nProduct: ${product.name}\nQuantity: ${formData.quantity}\nMessage: ${formData.message}`
     )}`;
     window.open(url, "_blank");
     setWhatsappFormProduct(null);
@@ -61,8 +68,7 @@ Message: ${formData.message}`
       {/* Main Layout */}
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row mt-8 gap-6 px-4">
         {/* Category Sidebar */}
-        <div className="w-full md:w-1/4 bg-white p-4 rounded-lg shadow border self-start">
-
+        <div className="w-full md:w-[16%] bg-white p-4 rounded-lg shadow border self-start">
           <h3 className="text-lg font-semibold mb-4 text-gray-800">Categories</h3>
           <ul className="space-y-2">
             <li>
@@ -95,12 +101,12 @@ Message: ${formData.message}`
         </div>
 
         {/* Products Section */}
-        <div className="w-full md:w-3/4">
+        <div className="w-full md:w-[84%]">
           {/* Search */}
           <div className="mb-6">
             <input
               type="text"
-              placeholder="Search by name, description, or category..."
+              placeholder="What product are you looking for?"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full p-3 border border-gray-300 bg-white rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
@@ -131,12 +137,7 @@ Message: ${formData.message}`
                   {/* Action Buttons */}
                   <div className="flex gap-2 px-4 pb-4">
                     <button
-                      onClick={() => {
-                        const number = import.meta.env.VITE_CALL_NUMBER;
-                        if (window.confirm(`Do you want to call ${number}?`)) {
-                          window.location.href = `tel:${number}`;
-                        }
-                      }}
+                      onClick={handleCall}
                       className="flex-1 py-2 bg-green-500 text-white text-sm text-center rounded-md hover:bg-green-600"
                     >
                       📞 Call
