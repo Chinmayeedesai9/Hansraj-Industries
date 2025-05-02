@@ -53,7 +53,7 @@ const Home = () => {
       {/* Hero Section */}
       <div
         className="relative w-full h-[90vh] bg-center bg-cover"
-        style={{ backgroundImage: "url('/Hansind6.png')" }}
+        style={{ backgroundImage: "url('/Hansrajbg.png')" }}
       >
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-center px-4">
           <div>
