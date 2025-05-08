@@ -2,40 +2,54 @@ import { Mail, MapPin, Phone } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-zinc-900 text-white py-12 px-4 md:px-10">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        {/* Logo and Brand Info */}
-        <div className="flex flex-col items-start">
-          <img
-            src="/sticker.png"
-            alt="Hansraj Industries"
-            className="w-80 md:w-90 mb-4"
-          />
-          <p className="text-sm text-zinc-300 max-w-md">
-            Hansraj Industries, established in 1968, is a pioneer in industrial equipment manufacturing — blending legacy with innovation.
-          </p>
+    <>
+      {/* Soft gap between page and footer */}
+      <div className=" w-full" />
+
+      <footer className="bg-zinc-900 text-white py-8 px-4 md:px-10">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-start gap-6">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <img
+              src="/sticker.png"
+              alt="Hansraj Industries"
+              className="w-60 md:w-90"
+            />
+          </div>
+
+          {/* Contact Info */}
+          <div className="flex flex-col gap-3 text-sm font-small text-zinc-300 items-end text-right">
+            <div className="flex items-center gap-2">
+              <Phone size={16} />
+              <a href="tel:+919822330411" className="hover:underline">
+                +91 98223 30411
+              </a>
+            </div>
+            <div className="flex items-center gap-2">
+              <Mail size={16} />
+              <a href="mailto:hansrajind@gmail.com" className="hover:underline">
+                hansrajind@gmail.com
+              </a>
+            </div>
+            <div className="flex items-center gap-2">
+              <MapPin size={16} />
+              <a className="hover:underline"
+              href="https://www.google.co.in/maps/dir//18.65542,73.86711/@18.655402,73.7847083,12z?entry=ttu&g_ep=EgoyMDI1MDUwNS4wIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer">
+                Moshi, Pimpri Chinchwad, Pune,Maharashtra, India
+              </a>
+            </div>
+          </div>
         </div>
 
-        {/* Contact Info */}
-        <div className="flex flex-col gap-4 text-sm text-zinc-300">
-          <div className="flex items-center gap-3">
-            <Phone size={18} /> <span>+91 98765 43210</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <Mail size={18} /> <span>info@hansraj.com</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <MapPin size={18} /> <span>Pune, Maharashtra, India</span>
-          </div>
-        </div>
-      </div>
+        <hr className="my-6 border-zinc-700" />
 
-      <hr className="my-8 border-zinc-700" />
-
-      <p className="text-center text-xs text-zinc-500">
-        &copy; {new Date().getFullYear()} Hansraj Industries. All rights reserved.
-      </p>
-    </footer>
+        <p className="text-center text-xs text-zinc-500">
+          &copy; {new Date().getFullYear()} Hansraj Industries. All rights reserved.
+        </p>
+      </footer>
+    </>
   );
 };
 

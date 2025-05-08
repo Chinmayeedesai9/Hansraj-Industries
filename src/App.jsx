@@ -8,6 +8,7 @@ import ProductDetail from "./pages/ProductDetail";
 import AboutUs from "./pages/AboutUs";
 import AdminPage from "./pages/AdminPage";
 import Login from "./pages/Login";
+import Wishlist from "./pages/Wishlist";
 import Signup from "./pages/Signup"; // ✅ Import Signup
 
 import { AuthProvider } from "./context/AuthContext"; // ✅ Wrap app in AuthProvider
@@ -16,7 +17,7 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <div className="min-h-screen bg-gray-50 flex flex-col">
+        <div className="min-h-screen bg-amber-50 flex flex-col">
           <Navbar />
 
           <div className="flex-grow pb-10">
@@ -28,6 +29,8 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/admin" element={<AdminPage />} />
+              <Route path="/wishlist" element={<Wishlist />} />
+
             </Routes>
           </div>
 

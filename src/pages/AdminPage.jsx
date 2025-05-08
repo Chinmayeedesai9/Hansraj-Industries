@@ -167,7 +167,7 @@ const AdminPage = () => {
 
   if (!authenticated) {
     return (
-      <div className="h-screen flex flex-col justify-center items-center bg-gray-50 px-4">
+      <div className="h-screen flex flex-col justify-center items-center bg-amber-50 px-4">
         <h2 className="text-2xl font-bold mb-4">Admin Login</h2>
         <form
           className="w-full max-w-sm space-y-4"

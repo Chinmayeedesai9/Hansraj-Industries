@@ -1,20 +1,21 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogOut } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, isAdmin } = useAuth();
-
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogout = async () => {
     await signOut(auth);
     setIsOpen(false);
-    navigate("/"); // Redirect to home page
+    navigate("/");
   };
 
   const getFirstName = () => {
@@ -23,63 +24,65 @@ const Navbar = () => {
     return "User";
   };
 
+  const linkClasses = (path) =>
+    `transition hover:text-emerald-700 ${
+      location.pathname === path ? "text-sky-900 font-semibold" : "text-slate-700"
+    }`;
+
   const navLinks = (
     <>
-      <Link to="/" className="text-slate-700 hover:text-yellow-600 transition">
+      <Link to="/" className={linkClasses("/")}>
         Home
       </Link>
-      <Link
-        to="/products"
-        className="text-slate-700 hover:text-yellow-600 transition"
-      >
+      <Link to="/products" className={linkClasses("/products")}>
         Our Products
       </Link>
-      <Link
-        to="/about"
-        className="text-slate-700 hover:text-yellow-600 transition"
-      >
+      <Link to="/about" className={linkClasses("/about")}>
         About Us
       </Link>
       {user && (
-        <Link
-          to="/wishlist"
-          className="text-slate-700 hover:text-yellow-600 transition"
-        >
+        <Link to="/wishlist" className={linkClasses("/wishlist")}>
           Wishlist
         </Link>
       )}
       {isAdmin && (
-        <Link
-          to="/admin"
-          className="text-slate-700 hover:text-red-600 transition"
-        >
+        <Link to="/admin" className={linkClasses("/admin") + " hover:text-red-600"}>
           Admin Panel
         </Link>
       )}
       {user ? (
         <>
-          <span className="text-slate-700">Welcome, {getFirstName()}!</span>
-          <button
-            onClick={handleLogout}
-            className="text-red-600 hover:underline"
-          >
-            Logout
-          </button>
+          <span className="bg-sky-100 text-sky-900 px-3 py-1 rounded-full text-sm font-semibold">
+            Welcome, {getFirstName()}!
+          </span>
+          <div className="relative group cursor-pointer">
+            <LogOut
+              size={22}
+              onClick={handleLogout}
+              className="text-red-600 hover:text-red-700"
+            />
+            <span className="absolute left-1/2 -translate-x-1/2 mt-1 w-max text-xs text-white bg-slate-800 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition">
+              Logout
+            </span>
+          </div>
+
         </>
       ) : (
         <Link
           to="/login"
-          className="text-slate-700 hover:text-red-600 transition"
+          className="border border-slate-700 bg-slate-700 text-white px-3 py-1 rounded hover:bg-white hover:text-slate-700 transition"
         >
           Login
         </Link>
+
       )}
     </>
   );
 
   return (
-    <nav className="bg-white shadow-md border-b border-yellow-600">
+    <nav className="bg-white shadow-md border-b border-sky-600">
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+        {/* Logo */}
         <Link to="/" className="flex items-center space-x-2">
           <img
             src="/rajhanslogo.png"
@@ -91,10 +94,12 @@ const Navbar = () => {
           </span>
         </Link>
 
-        <div className="hidden md:flex space-x-6 text-base font-medium">
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center space-x-6 text-base font-medium">
           {navLinks}
         </div>
 
+        {/* Mobile Menu Button */}
         <button
           className="md:hidden text-slate-800 focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
@@ -103,8 +108,9 @@ const Navbar = () => {
         </button>
       </div>
 
+      {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden px-4 pb-4 space-y-2 text-base font-medium">
+        <div className="md:hidden px-6 pb-4 pt-2 space-y-3 text-base font-medium flex flex-col">
           {navLinks}
         </div>
       )}
