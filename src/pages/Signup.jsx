@@ -41,7 +41,7 @@ const Signup = () => {
 
   return (
     <div className="max-w-md mx-auto mt-10 p-6 shadow-lg border rounded-lg bg-white">
-      <h2 className="text-2xl font-bold text-center mb-4 text-blue-900">Sign Up</h2>
+      <h2 className="text-2xl font-head font-bold text-center mb-4 text-blue-900">Sign Up</h2>
 
       <form onSubmit={handleSignup} className="space-y-4">
         <label className="block">
@@ -111,7 +111,7 @@ const Signup = () => {
 
         <button
           type="submit"
-          className="w-full bg-blue-900 hover:bg-blue-800 text-white font-medium py-2 rounded"
+          className="w-full font-head bg-blue-900 hover:bg-blue-800 text-white font-medium py-2 rounded"
         >
           Sign Up
         </button>

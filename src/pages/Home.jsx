@@ -35,7 +35,17 @@ const categories = [
   },
 ];
 
-const clients = ["Tata", "Tech Mahindra", "xyz", "abc", "321", "123"];
+const clients = [
+  "Tata Motors",
+  "Mahindra",
+  "Mercedes-Benz",
+  "Jaguar Land Rover",
+  "Piaggio",
+  "Conductix Wampfler",
+  "TOX Pressotechnik",
+  "Force Motors",
+];
+
 
 const Home = () => {
   const scrollRef = useRef();
@@ -68,36 +78,33 @@ const Home = () => {
   };
 
   return (
-      <div className="w-full bg-amber-50">
-  {/* Hero Banner */}
-        <div
-          className="relative w-full h-[90vh] bg-center bg-cover"
-          style={{ backgroundImage: "url('/Hansrajbg.png')" }}
-        >
-          <div className="absolute inset-0 bg-black/40 flex items-center justify-center md:justify-start md:items-start text-left px-6 md:pl-[200px] pt-0 md:pt-48">
-            <div className="text-center md:text-left">
-              <h1 className="text-4xl md:text-6xl font-name text-white drop-shadow-lg">
-                Hansraj Industries
-              </h1>
-              <p className="mt-4 text-lg md:text-xl font-head text-zinc-200 max-w-xl mx-auto md:mx-0">
-                Established in the year 1968 at Pune, Maharashtra.
-              </p>
-              <Link
-                to="/products"
-                className="inline-block mt-6 px-8 py-3 text-lg font-small text-white bg-emerald-600 hover:bg-yellow-700 transition"
-              >
-                Explore Products
-              </Link>
-            </div>
+    <div className="w-full bg-amber-50">
+      {/* Hero Section */}
+      <div
+        className="relative w-full h-[90vh] bg-center bg-cover"
+        style={{ backgroundImage: "url('/Hansrajbg.png')" }}
+      >
+        <div className="absolute inset-0 bg-black/40 flex items-center justify-center md:justify-start md:items-start text-left px-6 md:pl-[200px] pt-0 md:pt-48">
+          <div className="text-center md:text-left">
+            <h1 className="text-4xl md:text-6xl font-name text-white drop-shadow-lg">
+              Hansraj Industries
+            </h1>
+            <p className="mt-4 text-lg md:text-xl font-head text-zinc-200 max-w-xl mx-auto md:mx-0">
+              Established in the year 1968 at Pune, Maharashtra.
+            </p>
+            <Link
+              to="/products"
+              className="inline-block mt-6 px-8 py-3 text-lg font-small text-white bg-emerald-600 hover:bg-yellow-700 transition"
+            >
+              Explore Products
+            </Link>
           </div>
         </div>
-
+      </div>
 
       {/* Brand Summary Section */}
       <section className="px-6 py-20 sm:px-10 lg:px-20 bg-amber-50">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-          
-          {/* Box 1: Image container (increased height + border) */}
           <div className="md:col-span-2 border-rounded-lg border-2 border-yellow-700 rounded-lg bg-stone-50">
             <img
               src="/bannerlogo.png"
@@ -106,33 +113,21 @@ const Home = () => {
             />
           </div>
 
-          {/* Box 2: Heading + Paragraph (with padding + thick border) */}
-          <div
-            className="md:row-span-2 relative flex flex-col items-center justify-center text-center md:text-left md:items-start p-6 min-h-[560px] rounded-lg shadow overflow-hidden"
-          >
-            {/* Background Image */}
+          <div className="md:row-span-2 relative flex flex-col items-center justify-center text-center md:text-left md:items-start p-6 min-h-[560px] rounded-lg shadow overflow-hidden">
             <div
               className="absolute inset-0 bg-cover bg-center z-0"
               style={{ backgroundImage: "url('/bghero.png')" }}
             ></div>
-
-            {/* Dark Overlay */}
-
-            {/* Content */}
             <div className="relative z-20 text-white">
               <h2 className="text-3xl font-head font-bold mb-4">
                 Over 50 Years of Trusted Engineering
               </h2>
-              <p className="max-w-md font-small ">
-                Hansraj Industries has served India’s core industries with unmatched dedication to quality, innovation, and engineering precision since 1968. From carbon brushes to copper connectors, and from custom parts to large-scale assemblies, we continue to empower India’s industrial backbone with excellence.
+              <p className="max-w-md font-small">
+                Hansraj Industries has served India’s core industries with unmatched dedication to quality, innovation, and engineering precision since 1968. From carbon brushes to copper connectors, and from custom parts to large-scale assemblies, we continue to empower India’s industrial backbone with excellence.Our time tested products have gained trust since decades with our experinced and talented  team always at the service !
               </p>
             </div>
           </div>
 
-
-
-
-          {/* Box 3: Additional Paragraph (with padding + border) */}
           <div className="md:col-span-1 bg-sky-900 p-6 border-2 border-sky-950 min-h-[235px] rounded-lg shadow">
             <p className="text-white font-head text-xl leading-relaxed">
               Hansraj Industries has been a cornerstone of Indian industry since 1968,
@@ -140,7 +135,6 @@ const Home = () => {
             </p>
           </div>
 
-          {/* Box 4: Button (larger, animated, styled) */}
           <div className="md:col-span-1">
             <a
               href="/brochure.pdf"
@@ -153,16 +147,12 @@ const Home = () => {
         </div>
       </section>
 
-
-
-
       {/* Categories Section */}
       <section className="py-12 px-6 sm:px-10 lg:px-24 relative">
         <h2 className="text-4xl font-bold font-head text-slate-800 mb-3 text-left border-b-[4px] border-amber-600 w-fit pb-1">
           Explore Our Categories
         </h2>
 
-        {/* Arrows */}
         <button
           onClick={() => scroll("left")}
           className="absolute left-4 top-[50%] transform -translate-y-1/2 z-10 bg-white p-2 shadow-md hover:scale-110 transition hidden md:block"
@@ -176,7 +166,6 @@ const Home = () => {
           <ChevronRight className="w-6 h-6 text-slate-600" />
         </button>
 
-        {/* Cards */}
         <div
           ref={scrollRef}
           className="flex gap-6 overflow-x-auto scroll-smooth pb-4 hide-scrollbar snap-x snap-mandatory"
@@ -219,7 +208,7 @@ const Home = () => {
 
       {/* Clients Banner */}
       <div className="bg-white py-10 px-6 sm:px-10 lg:px-24 border-t border-amber-100">
-        <h3 className="text-center text-xl font-semibold text-gray-800 mb-6">
+        <h3 className="text-center text-2xl font-head font-semibold text-gray-800 mb-6">
           Our Clients
         </h3>
         <div className="overflow-hidden relative">

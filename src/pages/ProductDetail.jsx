@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { Heart } from "lucide-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
+  
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -156,23 +156,23 @@ const ProductDetail = () => {
         {/* Product Info */}
         <div className="space-y-6 w-full">
           <div>
-            <h1 className="text-4xl font-extrabold text-emerald-700 mb-2">{product.name}</h1>
-            <span className="inline-block bg-emerald-200 text-emerald-800 text-sm px-3 py-1 rounded-full shadow-sm">
+            <h1 className="text-4xl font-extrabold font-head text-emerald-700 mb-2">{product.name}</h1>
+            <span className="inline-block bg-emerald-200 font-small text-emerald-800 text-sm px-3 py-1 rounded-full shadow-sm">
               🏷️ Category: {product.category}
             </span>
           </div>
 
           {/* Price */}
-          <div>
+          <div className="font-head">
             <h3 className="font-semibold text-xl text-slate-800">Price:</h3>
             <p className="text-2xl font-bold text-emerald-700">₹{product.price}</p>
           </div>
 
-          <p className="text-slate-800 text-lg leading-relaxed">{product.description}</p>
+          <p className="text-slate-800 font-small text-lg leading-relaxed">{product.description}</p>
 
           <div>
-            <h3 className="font-semibold text-xl text-slate-800 mb-1">📋 Specifications:</h3>
-            <div className="text-slate-700 whitespace-pre-line border border-zinc-400 p-4 rounded-md bg-white shadow">
+            <h3 className="font-semibold text-xl font-head text-slate-800 mb-1">📋 Specifications:</h3>
+            <div className="text-slate-700 font-small whitespace-pre-line border border-zinc-400 p-4 rounded-md bg-white shadow">
               {product.specifications}
             </div>
           </div>

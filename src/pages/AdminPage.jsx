@@ -168,7 +168,7 @@ const AdminPage = () => {
   if (!authenticated) {
     return (
       <div className="h-screen flex flex-col justify-center items-center bg-amber-50 px-4">
-        <h2 className="text-2xl font-bold mb-4">Admin Login</h2>
+        <h2 className="text-2xl font-head font-bold mb-4">Admin Login</h2>
         <form
           className="w-full max-w-sm space-y-4"
           onSubmit={(e) => {
@@ -189,7 +189,7 @@ const AdminPage = () => {
           />
           <button
             type="submit"
-            className="bg-blue-600 w-full text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+            className="bg-blue-600 font-small w-full text-white px-4 py-2 rounded hover:bg-blue-700 transition"
           >
             Submit
           </button>
@@ -199,14 +199,14 @@ const AdminPage = () => {
   }
 
   return (
-    <div className="w-full min-h-screen bg-zinc-300 px-4 py-8">
-      <h1 className="text-3xl font-bold text-center text-blue-700 mb-8">
+    <div className="w-full min-h-screen bg-amber-50 px-4 py-8">
+      <h1 className="text-3xl font-head font-bold text-center text-blue-700 mb-8">
         Admin Panel
       </h1>
 
       {/* Add Product */}
       <div className="max-w-6xl mx-auto bg-white rounded-lg shadow-md p-6 mb-10 space-y-4">
-        <h2 className="text-xl font-semibold">Add New Product</h2>
+        <h2 className="text-xl font-head font-semibold">Add New Product</h2>
         <div className="grid md:grid-cols-2 gap-4">
           <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Product Name" className="border p-2 rounded" />
           <textarea value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Description" rows={3} className="border p-2 rounded resize-y" />
@@ -245,7 +245,7 @@ const AdminPage = () => {
       </div>
 
       {/* Product List */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 font-small sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredProducts.map((product) => (
           <div
             key={product.id}

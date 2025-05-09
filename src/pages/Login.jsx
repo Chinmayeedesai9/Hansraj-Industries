@@ -40,7 +40,7 @@ const Login = () => {
 
   return (
     <div className="max-w-md mx-auto mt-10 p-6 shadow-lg border rounded-lg bg-white">
-      <h2 className="text-2xl font-bold text-center mb-4 text-blue-900">Login</h2>
+      <h2 className="text-2xl font-bold text-center font-head mb-4 text-blue-900">Login</h2>
       <form onSubmit={handleLogin} className="space-y-4">
         <label className="block">
           <span className="text-sm font-medium">Email <span className="text-red-500">*</span></span>
@@ -57,7 +57,7 @@ const Login = () => {
         </label>
 
         <label className="block relative">
-          <span className="text-sm font-medium">Password <span className="text-red-500">*</span></span>
+          <span className="text-sm  font-medium">Password <span className="text-red-500">*</span></span>
           <input
             name="password"
             type={showPass ? "text" : "password"}
@@ -81,7 +81,7 @@ const Login = () => {
 
         <button
           type="submit"
-          className="w-full bg-blue-900 hover:bg-blue-800 text-white font-medium py-2 rounded"
+          className="w-full font-head bg-blue-900 hover:bg-blue-800 text-white font-medium py-2 rounded"
         >
           Log In
         </button>

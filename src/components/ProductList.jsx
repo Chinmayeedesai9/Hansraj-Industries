@@ -98,12 +98,12 @@ const ProductList = () => {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row mt-8 gap-6 px-4">
         {/* Categories */}
         <div className="w-full md:w-[16%] bg-white p-4 shadow border self-start">
-          <h3 className="text-lg font-semibold mb-4 text-gray-800">Categories</h3>
+          <h3 className="text-lg font-semibold font-head mb-4 text-gray-800">Categories</h3>
           <ul className="space-y-2">
             <li>
               <button
                 onClick={() => setSelectedCategory("All")}
-                className={`w-full text-left rounded-lg px-2 py-1 transition ${
+                className={`w-full text-left font-small rounded-lg px-2 py-1 transition ${
                   selectedCategory === "All"
                     ? "bg-yellow-200 text-yellow-900 font-bold"
                     : "hover:bg-amber-100 text-gray-700"
@@ -116,7 +116,7 @@ const ProductList = () => {
               <li key={index}>
                 <button
                   onClick={() => setSelectedCategory(cat)}
-                  className={`w-full text-left rounded-lg px-2 py-1 transition ${
+                  className={`w-full text-left font-small rounded-lg px-2 py-1 transition ${
                     selectedCategory === cat
                       ? "bg-yellow-200 text-yellow-900 font-bold"
                       : "hover:bg-amber-100 text-gray-700"
@@ -151,7 +151,7 @@ const ProductList = () => {
               </p>
             ) : (
               filteredProducts.map(product => (
-                <div key={product.id} className="bg-white border rounded-lg shadow-md hover:shadow-lg transition relative">
+                <div key={product.id} className="bg-white border font-small rounded-lg shadow-md hover:shadow-lg transition relative">
                   <Link to={`/product/${product.id}`} className="block">
                     <img
                       src={product.images?.[0]}

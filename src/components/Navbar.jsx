@@ -89,13 +89,13 @@ const Navbar = () => {
             alt="Hansraj Industries Logo"
             className="w-10 h-10 object-contain"
           />
-          <span className="text-xl sm:text-2xl font-extrabold text-slate-800 hover:text-yellow-600 transition">
+          <span className="text-xl font-name sm:text-2xl  text-slate-800 hover:text-yellow-600 transition">
             Hansraj Industries
           </span>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center space-x-6 text-base font-medium">
+        <div className="hidden md:flex font-small font-extrabold items-center space-x-6 text-base font-medium">
           {navLinks}
         </div>
 
@@ -110,7 +110,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden px-6 pb-4 pt-2 space-y-3 text-base font-medium flex flex-col">
+        <div className="md:hidden font-small px-6 pb-4 pt-2 space-y-3 text-base font-medium flex flex-col">
           {navLinks}
         </div>
       )}

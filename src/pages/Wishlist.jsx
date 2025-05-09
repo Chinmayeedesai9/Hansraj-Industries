@@ -91,15 +91,15 @@ const Wishlist = () => {
     <div className="min-h-screen bg-amber-50 py-6 px-4 sm:px-8 lg:px-24 relative">
       {/* Top Section - Left Aligned */}
       <div className="mb-8">
-        <h1 className="text-4xl font-bold text-yellow-600 border-b-4 border-amber-200 pb-2 w-fit">
+        <h1 className="text-4xl font-head font-bold text-yellow-600 border-b-4 border-amber-200 pb-2 w-fit">
           About Hansraj Industries
         </h1>
-        <p className="text-gray-600 mt-1">Browse your saved items here.</p>
+        <p className="text-gray-600 font-small mt-1">Browse your saved items here.</p>
       </div>
 
       {/* Wishlist Content */}
       {wishlistItems.length === 0 ? (
-        <div className="text-gray-600 text-center bg-white p-6 rounded shadow">Your wishlist is empty.</div>
+        <div className="text-gray-600 text-center bg-white p-6 font-small rounded shadow">Your wishlist is empty.</div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {wishlistItems.map(product => (
@@ -110,7 +110,7 @@ const Wishlist = () => {
                   alt={product.name}
                   className="w-full h-64 object-cover rounded-t-lg"
                 />
-                <div className="p-4">
+                <div className="p-4 font-small ">
                   <h2 className="text-md font-semibold text-amber-900 line-clamp-1">{product.name}</h2>
                   <p className="text-gray-600 text-sm mt-1 line-clamp-2">{product.description}</p>
                 </div>
