@@ -37,14 +37,14 @@ const Navbar = () => {
       <Link to="/products" className={linkClasses("/products")}>
         Our Products
       </Link>
-      <Link to="/about" className={linkClasses("/about")}>
-        About Us
-      </Link>
       {user && (
         <Link to="/wishlist" className={linkClasses("/wishlist")}>
           Wishlist
         </Link>
       )}
+      <Link to="/about" className={linkClasses("/about")}>
+        About Us
+      </Link>
       {isAdmin && (
         <Link to="/admin" className={linkClasses("/admin") + " hover:text-red-600"}>
           Admin Panel
