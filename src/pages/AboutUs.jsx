@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
-
 const AboutUs = () => {
   const [showPrompt, setShowPrompt] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState("");
@@ -82,7 +81,7 @@ const AboutUs = () => {
 
         {/* About & Quick Facts */}
         <div className="space-y-10">
-          <div className="bg-white border font-small border-emerald-200 shadow p-6 space-y-6 rounded-xl">
+          <div className="bg-white border border-amber-200 shadow p-6 space-y-6 rounded-xl">
             <p className="text-slate-700 leading-relaxed">
               <strong>Transform Enterprises / Rajhans Engineering Works / Hansraj Industries</strong> was established in <strong>1968</strong> in Pune, Maharashtra. We are a <strong>Proprietorship firm</strong>, known for manufacturing high-quality <em>Epoxy Insulators, Conveyor Belts, Dowels Pins, Earthing Strips</em> and other essential industrial components.
             </p>
@@ -91,9 +90,9 @@ const AboutUs = () => {
             </p>
           </div>
 
-          <div className="bg-white border border-emerald-200 shadow p-6 rounded-xl">
-            <h2 className="text-xl font-semibold font-head text-sky-900 mb-4">Quick Facts</h2>
-            <div className="grid grid-cols-1 font-small sm:grid-cols-2 gap-4 text-slate-700">
+          <div className="bg-white border border-amber-200 shadow p-6 rounded-xl">
+            <h2 className="text-xl font-semibold font-head text-yellow-700 mb-4">Quick Facts</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-slate-700">
               <ul className="list-disc pl-5 space-y-1">
                 <li>Nature of Business: Manufacturer</li>
                 <li>Additional Role: Factory / Manufacturing</li>
@@ -112,32 +111,31 @@ const AboutUs = () => {
 
         {/* Mission & Vision */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div className="bg-white border border-emerald-200 shadow p-6 rounded-xl">
-            <h2 className="text-xl font-head font-semibold text-sky-900 mb-4">Our Mission</h2>
-            <p className="text-slate-700 font-small leading-relaxed">
+          <div className="bg-white border border-amber-200 shadow p-6 rounded-xl">
+            <h2 className="text-xl font-head font-semibold text-yellow-700 mb-4">Our Mission</h2>
+            <p className="text-slate-700 leading-relaxed">
               To deliver dependable, durable, and high-performance industrial products with a commitment to innovation, consistency, and excellence.
             </p>
           </div>
-
-          <div className="bg-white border border-emerald-200 shadow p-6 rounded-xl">
-            <h2 className="text-xl font-semibold font-head text-sky-900 mb-4">Our Vision</h2>
-            <p className="text-slate-700 font-small leading-relaxed">
+          <div className="bg-white border border-amber-200 shadow p-6 rounded-xl">
+            <h2 className="text-xl font-head font-semibold text-yellow-700 mb-4">Our Vision</h2>
+            <p className="text-slate-700 leading-relaxed">
               To be a leading manufacturer in the industrial components sector by continuously adapting to modern technologies while upholding our legacy of craftsmanship and integrity since 1968.
             </p>
           </div>
         </div>
 
         {/* Address */}
-        <div className="bg-white border border-emerald-200 shadow p-6 rounded-xl">
-          <h2 className="text-xl font-semibold font-head text-sky-900 mb-4">Address</h2>
-          <p className="text-slate-700 font-small">
+        <div className="bg-white border border-amber-200 shadow p-6 rounded-xl">
+          <h2 className="text-xl font-semibold font-head text-yellow-700 mb-4">Address</h2>
+          <p className="text-slate-700">
             S No 54/3, Chovisawadi, Nashik Road, Chovisawadi, Pune, Moshi, Pimpri Chinchwad-412105, Maharashtra, India
           </p>
           <a
-            href="https://www.google.co.in/maps/dir//18.65542,73.86711/@18.655402,73.7847083,12z?entry=ttu&g_ep=EgoyMDI1MDUwNS4wIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D"
+            href="https://www.google.co.in/maps/dir//18.65542,73.86711/@18.655402,73.7847083,12z?entry=ttu"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block font-small mt-4 bg-emerald-600 text-white px-4 py-2 rounded-md hover:bg-emerald-700 transition"
+            className="inline-block mt-4 bg-amber-500 text-white px-4 py-2 rounded-md hover:bg-amber-600 transition"
           >
             Get Directions
           </a>
@@ -145,13 +143,13 @@ const AboutUs = () => {
 
         {/* Highlights */}
         <div className="py-12">
-          <h2 className="text-2xl font-bold font-head text-sky-900 mb-8">Our Highlights</h2>
+          <h2 className="text-2xl font-bold font-head text-yellow-700 mb-8">Our Highlights</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {highlights.map((item, index) => (
-              <div key={index} className="bg-white rounded-xl overflow-hidden border border-emerald-200 shadow hover:shadow-lg transition">
+              <div key={index} className="bg-white rounded-xl overflow-hidden border border-amber-200 shadow hover:shadow-lg transition">
                 <img src={item.src} alt={item.title} className="h-100 w-full object-cover" />
                 <div className="p-4 text-center">
-                  <h3 className="text-lg font-semibold font-small text-sky-900">{item.title}</h3>
+                  <h3 className="text-lg font-semibold text-yellow-800">{item.title}</h3>
                 </div>
               </div>
             ))}
@@ -160,7 +158,7 @@ const AboutUs = () => {
 
         {/* Photo Gallery */}
         <div className="py-12">
-          <h2 className="text-2xl font-head font-bold text-sky-900 mb-8">Photo Gallery</h2>
+          <h2 className="text-2xl font-head font-bold text-yellow-700 mb-8">Photo Gallery</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {galleryImages.map((src, index) => (
               <img
@@ -190,38 +188,38 @@ const AboutUs = () => {
           />
         )}
 
-
-
-        {/* Contact Us */}
-        <div className="bg-white border border-emerald-200 shadow p-6 rounded-xl">
-          <h2 className="text-xl font-head font-semibold text-sky-900 mb-4">Tell us what you need, and we'll help you get quotes</h2>
+        {/* Contact Us Section */}
+        <div className="bg-white border border-amber-200 shadow p-6 rounded-xl">
+          <h2 className="text-xl font-head font-semibold text-yellow-700 mb-4">
+            Tell us what you need, and we'll help you get quotes
+          </h2>
           <button
             onClick={() => setShowPrompt(true)}
-            className="bg-emerald-600 font-small text-white px-6 py-2 rounded-md hover:bg-emerald-700 transition"
+            className="bg-amber-500 text-white px-6 py-2 rounded-md hover:bg-amber-600 transition"
           >
             Submit Requirement
           </button>
         </div>
 
-        {/* Popup Modal */}
+        {/* Product Popup Modal */}
         {showPrompt && (
-          <div className="fixed inset-0 bg-opacity-40 flex items-center justify-center z-50">
-            <div className="bg-white rounded-xl p-6 w-full max-w-md shadow-xl border border-amber-200 relative">
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white rounded-xl p-6 w-full max-w-md shadow-xl border border-yellow-200 relative">
               <button
                 onClick={() => setShowPrompt(false)}
                 className="absolute top-2 right-3 text-gray-500 hover:text-red-500 text-xl"
               >
                 &times;
               </button>
-              <h3 className="text-lg font-semibold font-head text-yellow-600 mb-4">Choose Product & Quantity</h3>
+              <h3 className="text-lg font-semibold text-yellow-700 mb-4">Choose Product & Quantity</h3>
               <input
                 type="text"
                 placeholder="Search product"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full mb-3 p-2 border rounded-md"
+                className="w-full mb-3 p-2 border border-yellow-300 rounded-md"
               />
-              <div className="max-h-40 overflow-y-auto border rounded-md mb-3">
+              <div className="max-h-40 overflow-y-auto border border-yellow-200 rounded-md mb-3">
                 {filteredProducts.map((product, idx) => (
                   <div
                     key={idx}
@@ -239,7 +237,7 @@ const AboutUs = () => {
                 placeholder="Quantity"
                 value={quantity}
                 onChange={(e) => setQuantity(e.target.value)}
-                className="w-full p-2 border rounded-md mb-3"
+                className="w-full p-2 border border-yellow-300 rounded-md mb-3"
               />
               <button
                 onClick={handleSubmit}
@@ -251,8 +249,8 @@ const AboutUs = () => {
           </div>
         )}
 
-        <div className="bg-emerald-100 border border-emerald-200 p-6 rounded-xl text-center">
-          <p className="text-red-900 font-small font-medium text-lg">
+        <div className="bg-yellow-100 border border-yellow-200 p-6 rounded-xl text-center">
+          <p className="text-yellow-900 font-medium text-lg">
             Thank you for choosing <strong>Hansraj Industries</strong> as your trusted manufacturing partner.
           </p>
         </div>
