@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import { collection, getDocs, doc, setDoc, deleteDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { Link, useLocation } from "react-router-dom";
-import { Heart } from "lucide-react";
+import { Heart, ChevronDown, ChevronUp, Search } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
-import { Search } from "lucide-react";
 
 const ProductList = () => {
   const { user } = useAuth();
@@ -19,6 +18,7 @@ const ProductList = () => {
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [categories, setCategories] = useState([]);
   const [wishlist, setWishlist] = useState([]);
+  const [showCategories, setShowCategories] = useState(false);
 
   const defaultWhatsappNumber = import.meta.env.VITE_PHONE_NUMBER_WITH_COUNTRY;
 
@@ -90,43 +90,58 @@ const ProductList = () => {
       <div className="relative w-full h-72">
         <img
           src="/Hansind.png"
-          alt="Banner"
-          className="w-full h-full object-cover"
+          alt="Banner Desktop"
+          className="w-full h-full object-cover hidden sm:block"
+        />
+        <img
+          src="/phoneprod.png"
+          alt="Banner Mobile"
+          className="w-full h-full object-cover block sm:hidden"
         />
       </div>
 
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row mt-8 gap-6 px-4">
         {/* Categories */}
         <div className="w-full md:w-[16%] bg-white p-4 shadow border self-start">
-          <h3 className="text-lg font-semibold font-head mb-4 text-gray-800">Categories</h3>
-          <ul className="space-y-2">
-            <li>
-              <button
-                onClick={() => setSelectedCategory("All")}
-                className={`w-full text-left font-small rounded-lg px-2 py-1 transition ${
-                  selectedCategory === "All"
-                    ? "bg-yellow-200 text-yellow-900 font-bold"
-                    : "hover:bg-amber-100 text-gray-700"
-                }`}
-              >
-                All
-              </button>
-            </li>
-            {categories.map((cat, index) => (
-              <li key={index}>
+          {/* Toggle Button for Mobile */}
+          <div className="flex justify-between items-center md:hidden mb-2">
+            <h3 className="text-lg font-semibold font-head text-gray-800">Categories</h3>
+            <button onClick={() => setShowCategories(prev => !prev)} className="text-gray-600">
+              {showCategories ? <ChevronUp /> : <ChevronDown />}
+            </button>
+          </div>
+
+          {/* Category List */}
+          {(showCategories || window.innerWidth >= 768) && (
+            <ul className="space-y-2">
+              <li>
                 <button
-                  onClick={() => setSelectedCategory(cat)}
+                  onClick={() => setSelectedCategory("All")}
                   className={`w-full text-left font-small rounded-lg px-2 py-1 transition ${
-                    selectedCategory === cat
+                    selectedCategory === "All"
                       ? "bg-yellow-200 text-yellow-900 font-bold"
                       : "hover:bg-amber-100 text-gray-700"
                   }`}
                 >
-                  {cat}
+                  All
                 </button>
               </li>
-            ))}
-          </ul>
+              {categories.map((cat, index) => (
+                <li key={index}>
+                  <button
+                    onClick={() => setSelectedCategory(cat)}
+                    className={`w-full text-left font-small rounded-lg px-2 py-1 transition ${
+                      selectedCategory === cat
+                        ? "bg-yellow-200 text-yellow-900 font-bold"
+                        : "hover:bg-amber-100 text-gray-700"
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
 
         {/* Product Grid */}
